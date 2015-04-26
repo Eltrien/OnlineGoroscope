@@ -4,7 +4,7 @@
 var http=require('http');
 var fs = require('fs');
 var url = require('url');
-var fso = new ActiveXObject("Scripting.FileSystemObject");
+//var fso = new ActiveXObject("Scripting.FileSystemObject");
 
 var server=http.createServer(function(request,response)
 {
@@ -25,7 +25,7 @@ var server=http.createServer(function(request,response)
 
     var ending = newpathname[(newpathname.length - 4)] + newpathname[(newpathname.length - 3)] + newpathname[(newpathname.length - 2)] + newpathname[(newpathname.length - 1)];
     console.log("ending = " + ending);
-    if (ending == "html" && fso.FileExists(newpathname))
+    if (ending == "html" /*&& fso.FileExists(newpathname)*/)
     {
         fs.readFile(newpathname, function(err,contest)
         {
@@ -45,7 +45,7 @@ var server=http.createServer(function(request,response)
     }
     /*----------------------------------dinamich viborka stranic----------------------------------------*/
 /*#RabotaetNoCherezRaz:(*/
-    else/*na nepravilniy url vsegda gruzit errorpage, no inohda i na normalnie gruzit errorgage.. rabotaem!*/
+    else/*teper ne gruzit erreopage, no inohda i na normalnie gruzit errorgage.. rabotaem! nado sdelat' proverku na nalichie faila!!!*/
     {
         fs.readFile('errorpage.html', function(err,contest)
         {
