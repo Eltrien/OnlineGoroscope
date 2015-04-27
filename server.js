@@ -16,42 +16,43 @@ var server=http.createServer(function(request,response)
         newpathname = newpathname + pathname[iq+1];
     }
     console.log("newpathname = " + newpathname);
-    if (newpathname == "favicon.ico") response.end();
-    /*var homeDir = Titanium.Filesystem.getUserDirectory(); ne robit*/
-    /*var mySampleFile = getFile(newpathname); ne robit*/
-
-/*sdelat proverku na nalichie faila*/
-
-
-    var ending = newpathname[(newpathname.length - 4)] + newpathname[(newpathname.length - 3)] + newpathname[(newpathname.length - 2)] + newpathname[(newpathname.length - 1)];
-    console.log("ending = " + ending);
-    if (ending == "html" /*&& fso.FileExists(newpathname)*/)
-    {
-        fs.readFile(newpathname, function(err,contest)
-        {
-            response.writeHead(200,{'Content-Type':'text/html'});
-            response.end(contest);
-        })
-    }
     var ending = newpathname[(newpathname.length - 3)] + newpathname[(newpathname.length - 2)] + newpathname[(newpathname.length - 1)];
-    console.log("ending = " + ending);
-    if (ending == "css")
+    console.log("ending1 = " + ending);
+    if (ending == "ico") response.end();
+/*sdelat proverku na nalichie faila*/
+    fs.readFile(newpathname,function read(err1,data)
     {
-        response.writeHead(200,{'Content-Type':'text/css'});
-        fs.readFile('theme.css', function(err,contest)
+        if(err1)/*teper ne gruzit erreopage, no inohda i na normalnie gruzit errorgage.. rabotaem! nado sdelat' proverku na nalichie faila!!!*/
         {
-            response.end(contest);
-        })
-    }
+            fs.readFile('errorpage.html', function(err,contest)
+            {
+                response.end(contest);
+            })
+        }
+        else {
+            var ending = newpathname[(newpathname.length - 4)] + newpathname[(newpathname.length - 3)] + newpathname[(newpathname.length - 2)] + newpathname[(newpathname.length - 1)];
+            console.log("ending2 = " + ending);
+            if (ending == "html") {
+                fs.readFile(newpathname, function (err, contest) {
+                    response.writeHead(200, {'Content-Type': 'text/html'});
+                    response.end(contest);
+                })
+            }
+            var ending = newpathname[(newpathname.length - 3)] + newpathname[(newpathname.length - 2)] + newpathname[(newpathname.length - 1)];
+            console.log("ending3 = " + ending);
+            if (ending == "css") {
+                response.writeHead(200, {'Content-Type': 'text/css'});
+                fs.readFile('theme.css', function (err, contest) {
+                    response.end(contest);
+                })
+            }
+        }
+    })
+
+
     /*----------------------------------dinamich viborka stranic----------------------------------------*/
 /*#RabotaetNoCherezRaz:(*/
-    else/*teper ne gruzit erreopage, no inohda i na normalnie gruzit errorgage.. rabotaem! nado sdelat' proverku na nalichie faila!!!*/
-    {
-        fs.readFile('errorpage.html', function(err,contest)
-        {
-            response.end(contest);
-        })
-    }
+
 /*#End RabotaetNoCherezRaz:(*/
 })
 server.listen(8000);
