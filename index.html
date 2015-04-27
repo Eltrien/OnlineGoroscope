@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:http="http://www.w3.org/1999/xhtml">
 <head lang="en">
+    <title>Online Goroscope</title>
     <meta charset="UTF-8">
-    <title></title>
     <link type="text/css" rel="stylesheet" href="theme.css">
+    <script language="javascript" type="text/javascript" src="time.js"></script>
+
+
+
+
+
+
+
+
 </head>
 <body>
 <div id="top">
     <ul>
         <li>
-            <a href="index.html"><img src="mainicon.jpg" class="top-icon"></a></li>
+            <a href="index.html"><img src="pictures/mainicon.jpg" class="top-icon"></a></li>
         <li>
             <a href="forecast.html" class="top-links">forecasts</a></li>
     </ul>
@@ -100,16 +109,19 @@
 
 
 <!--#ScriptForFun-->
-    <p>
-        <script type="text/javascript" src="http://www.likiliks.ru/clock24.js"></script>
-        <table style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 14px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" class="clock24st" border="0" cellSpacing="1" cellPadding="3" bgColor="#324566" align="center">
-        <tbody>
-            <tr>
-                <td style="FONT-FAMILY: arial; FONT-SIZE: 12px" class="clock24std" bgColor="#ffffff"><style="text-decoration:none;"><span style="COLOR: #324566" id="clock24_66151" class="clock24s">likiliks.ru</span></a>
-                </td></tr></tbody></table></style="text-decoration:none;"><style="text-decoration:none;"></style="text-decoration:none;">
-        <script type="text/javascript"> var clock24_66151 = new clock24('66151',180,'%dd / %M / %yyyy %W %hh:%nn:%ss','ru'); clock24_66151.daylight('RU'); clock24_66151.refresh(); </script>
-    </p>
-<!--#EndScriptForFun-->
+
+
+
+    <table border="0" bgcolor="#cfba6b" cellspacing=1 cellpadding=3 class="clock24st" style="line-height:14px; padding:0;">
+        <tr>
+            <td bgcolor="#050020" class="clock24std" style="font-family:arial; font-size:12px;">
+                <span class="clock24" id="clock24_55767" style="color:#cfba6b;"></span></td></tr>
+    </table>
+    <!--<script type="text/javascript">
+        var clock24 = new clock24('55767',180,'%yyyy/%mm/%dd %W %HH:%nn:%ss %P','en');
+        clock24.daylight('RU'); clock24.refresh();
+    </script>
+    <!--#EndScriptForFun-->
 
 
 </div>
