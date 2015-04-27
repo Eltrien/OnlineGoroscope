@@ -45,7 +45,7 @@
     padding-right: 5px;
     word-wrap: break-word;
     width: 60%;
-    margin-left: 30%;
+    margin-left: 28%;
     margin-top: 50px;
 }
 #page-error
@@ -54,7 +54,16 @@
     top: 50px;
     left: 0;
     width: 100%;
-
+}
+#time
+{
+    position: fixed;
+    top: 50px;
+    right: 4px;
+    width: 130px;
+    height: 100px;
+    font-size: 25px;
+    mso-padding-between: 5px;
 }
 #forecast
 {
