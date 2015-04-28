@@ -1,11 +1,31 @@
 /**
  * Created by User on 24.04.2015.
  */
-src="time.js"
+src="time.js";
 var http=require('http');
 var fs = require('fs');
 var url = require('url');
-//var express = require('express');
+var mysql      = require('mysql');
+var client = mysql.createClient();
+client.host='127.0.0.1';
+client.port= '3306';
+client.user='root';
+client.password='qwerty007';
+client.database='node';
+var connection = mysql.createConnection({
+    host     : 'localhost',
+    user     : 'root',
+    password : 'qwerty007'
+});
+
+connection.connect();
+connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
+    if (err) throw err;
+
+    console.log('The solution is: ', rows[0].solution);
+});
+connection.end();
+
 var server=http.createServer(function(request,response)
 {
     var pathname = url.parse(request.url).pathname;

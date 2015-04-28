@@ -35,7 +35,6 @@ function clock24_format(now, clock24_f)
     s = s.replace( new RegExp("%hh"), hh);
     s = s.replace( new RegExp("%nn"), nn);
     s = s.replace( new RegExp("%ss"), ss);
-
     return s.toString();
 }
 
