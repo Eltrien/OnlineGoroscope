@@ -14,6 +14,6 @@ var myClock = function()
     s = s.replace( new RegExp("%hh"), hh);
     s = s.replace( new RegExp("%nn"), nn);
     s = s.replace( new RegExp("%ss"), ss);
-    return s;
+    return '<div id=\"time\">'+s+'</div>';
 };
 module.exports = myClock;

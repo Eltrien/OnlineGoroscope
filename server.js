@@ -5,6 +5,9 @@ var http=require('http');
 var fs = require('fs');
 var url = require('url');
 var clock = require('./time');
+var top = require('./top')
+var express = require('express');
+var jade = require('jade');
 /*var mysql = require('mysql');
 var host='127.0.0.1';
 var port= '3306';
@@ -31,38 +34,18 @@ var server=http.createServer(function(request,response)
 {
     var pathname = url.parse(request.url).pathname;
     var newpathname = "";
-    for (iq = 0; iq < pathname.length -1; iq++)
-    {
-        newpathname = newpathname + pathname[iq+1];
-    }
-    fs.readFile(newpathname,function read(err1,data)
+    for (iq = 1; iq < pathname.length; iq++) newpathname += pathname[iq];
+    if (newpathname == "") newpathname = "index";
+    fs.readFile(newpathname+'.html',function read(err1,data)
     {
 /*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
         response.writeHead(200, {'Content-Type': 'text/html'});
-        var string = '<div id=\"top\"><ul><li><a href=\"index.html\"><img src=\"pictures/mainicon.jpg\" class=\"top-icon\"></a></li><li><a href=\"forecast.html\" class=\"top-links\">forecasts</a></li></ul></div>'
-        response.write(string.toString());
-        var s = clock();
-        string = '<div id=\"time\"><table><tr><td><span>'+s+'</span></td></tr></table></div>';
-        response.write(string.toString());
+        var string = top(); /*top bar*/
+        string += clock(); /*time*/
+        response.write(string);
 /*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-        if (newpathname=="")
-        {
-            fs.readFile('index.html', function(err,contest)
-            {
-                response.end(contest);
-            })
-        }
-        if(err1)
-        {
-            fs.readFile('errorpage.html', function(err,contest)
-            {
-                response.end(contest);
-            })
-        }
-        else
-        {
-            response.end(data);
-        }
+        if(err1) fs.readFile('errorpage.html', function(err,contest){response.end(contest);})
+        else response.end(data);
     })
 })
 server.listen(8000);

@@ -1,51 +1,186 @@
-#top
+#topbar-bar
 {
     background: fixed #040507 url(pictures/topbar.jpg) repeat top;
     position: fixed;
     top: 0;
     left: 0;
+    padding: 0;
+    margin: 0;
     width: 100%;
     height: 40px;
-    font-size: 17px;
+    font-size: 16px;
     color: #cfba6b;
-    /*font-family: serif, fantasy ;*/
-}
-.top-icon
-{
-    position: fixed;
-    padding-top: 0;
-    top: 0;
-    left: 0;
-    width: 40px;
-    height: 40px;
-}
-.top-links
-{
-    text-decoration: none;
-    user-select: none;
-    position: fixed;
-    padding-top: 0;
-    top: 12px;
-    left: 50px;
     text-transform: uppercase;
-    color: #cfba6b;
-    font-size: 100%;
-    height: 40px;
+    box-sizing: border-box;
+    outline: 1px solid #0C1830;
+    vertical-align: middle;
 }
-#top-login
-{}
-#top-password
-{}
+.topbar-content
+{
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    float: left;
+}
+.topbar-icon
+{
+    display: inline-block;
+    margin-top: 4px;
+    float: left;
+}
+.topbar-links
+{
+    display: inline-block;
+    float: left;
+    height: 100%;
+}
+.topbar-listing
+{
+    margin: 0;
+    height: 100%;
+}
+.topbar-list
+{
+    float: left;
+    vertical-align: baseline;
+    margin-top: 12px;
+}
+.topbar-list-element
+{
+    height: 100%;
+    text-decoration: none;
+    padding: 0 1em;
+    color: #cfba6b;
+    font-family: "Times New Roman";
+}
+.topbar-list-element:hover
+{
+    color: #d3c7a9;
+}
+.topbar-list-element:active
+{
+    color: #fff;
+}
+.topbar-account
+{
+    float: right;
+    display: inline-block;
+    height: 100%;
+}
+.topbar-account-listing
+{
+    display: inline-block;
+    margin: 0;
+    height: 100%;
+}
+.topbar-account-list
+{
+    display: inline-block;
+    margin-top: 7px;
+}
+.topbar-account-login
+{
+    font-size: 14px;
+    display: inline-block;
+    margin: 0 5px;
+    padding: 4px 28px;
+    text-decoration: none;
+    color: #ffffff;
+    background: linear-gradient(#db8e01,#871e0a);
+    box-shadow: inset 1px 1px 9px rgba(135,30,10,.8),inset -1px -1px 5px rgba(181,60,2,.8);
+    border: 1px solid;
+    border-color: #a29361 #928456 #5f5940 #928456;
+    border-radius: 1px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,.8);
+    font-style: italic;
+    font-family: "Times New Roman";
+    outline: none;
+}
+.topbar-account-login:hover
+{
+    background: linear-gradient(#f3a502, #90210c);
+    box-shadow: inset 1px 1px 9px rgba(135, 30, 10, .8), inset -1px -1px 5px rgba(181, 60, 2, .8);
+}
+.topbar-account-login:active
+{
+    background: linear-gradient(#b87900,#651306);
+    box-shadow: inset 1px 1px 9px rgba(135,30,10,.8),inset -1px -1px 5px rgba(181,60,2,.8);
+    color: #d1c6b9;
+}
+.topbar-account-register
+{
+    font-size: 14px;
+    display: inline-block;
+    margin: 0 5px;
+    padding: 4px 19px;
+    text-decoration: none;
+    color: #baa27c;
+    background: linear-gradient(#215f62,#0a2021);
+    border: 1px solid;
+    border-color: #187277 #3a6668 #0e3f41 #3a6668;
+    border-radius: 1px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,.8);
+    font-style: italic;
+    outline: none;
+}
+.topbar-account-register:hover
+{
+    background: linear-gradient(#187277, #0d2d2f);
+}
+.topbar-account-register:active
+{
+    background: linear-gradient(#1c5254,#061415);
+    color: #baa27c;
+}
+.topbar-input
+{
+    background: linear-gradient(to bottom, rgba(73,72,61,0.5), rgba(103,102,92,0.5));
+    border: 1px solid rgba(144,137,115,0.5);
+    border-radius: 1px;
+    padding: 4px 7px;
+    margin: 0 5px;
+    color: #d3c7a9;
+}
+.topbar-input:focus
+{
+    background: linear-gradient(to bottom, rgba(128,126,107,0.5), rgba(148,147,140,0.5));
+    border: 1px solid rgba(255,238,195,0.5);
+    border-radius: 1px;
+    outline: none;
+}
+#login-form-label
+{
+    text-transform: none;
+    font-size: 16px;
+    margin-left: 5px;
+}
+.mainicon
+{
+    margin: 0 5px 0 5px;
+    height: 32px;
+    width: 32px;
+    background: url(pictures/mainicon.jpg) no-repeat 50% 50%;
+    background-size: 32px 32px;
+    text-align: left;
+    overflow: hidden;
+    text-indent: -9999em;
+    display: block;
+
+}
+.mainicon:hover
+{
+    outline: 1px solid #5f5940;
+}
 #page
 {
-    background: #050010  ;
+    background: #050010;
     position: inherit;
     padding-top: 5px;
     padding-left: 5px;
     padding-right: 5px;
     word-wrap: break-word;
-    width: 60%;
-    margin-left: 28%;
+    width: 62%;
+    margin-left: 23%;
     margin-top: 50px;
 }
 #page-error
@@ -62,11 +197,11 @@
     right: 4px;
     width: 130px;
     height: 100px;
-    font-size: 25px;
+    font-size: 20px;
     mso-padding-between: 5px;
     background-color: #050010;
 }
-#forecast
+#forecastcol
 {
     position: fixed;
     word-wrap: break-word;
@@ -76,9 +211,18 @@
 }
 body
 {
-    background: fixed #040507 url(pictures/background.jpg);
+    background: fixed url(pictures/background.jpg);
     width: 100%;
     height: 100%;
     overflow: auto;
     color: #cfba6b;
+    font-family: "Gill Sans W04",GillSans,"Gill Sans","Gill Sans MT",Calibri,"Trebuchet MS",sans-serif;
 }
+a
+{
+    text-decoration: none;
+}
+::-webkit-input-placeholder {color:#cfba6b; font-size: 12px;}
+::-moz-placeholder          {color:#cfba6b; font-size: 12px;}/* Firefox 19+ */
+:-moz-placeholder           {color:#cfba6b; font-size: 12px;}/* Firefox 18- */
+:-ms-input-placeholder      {color:#cfba6b; font-size: 12px;}
