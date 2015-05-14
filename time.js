@@ -7,13 +7,13 @@ var myClock = function()
     var h = now.getHours(); var hh = h; if(h<10) hh='0'+h;
     var n = now.getUTCMinutes(); var nn = n; if(nn<10) nn='0'+n;
     var s = now.getUTCSeconds(); var ss = s; if(ss<10) ss='0'+s;
-    var s = new String('%hh:%nn <br> %dd/%mm/%yyyy');
+    var s = new String('%hh:%nn %dd.%mm.%yyyy');
     s = s.replace( new RegExp("%dd"), dd);
     s = s.replace( new RegExp("%mm"), mm);
     s = s.replace( new RegExp("%yyyy"), yyyy);
     s = s.replace( new RegExp("%hh"), hh);
     s = s.replace( new RegExp("%nn"), nn);
     s = s.replace( new RegExp("%ss"), ss);
-    return '<div id=\"time\">'+s+'</div>';
+    return '<div class="time">'+s+'</div>';
 };
 module.exports = myClock;

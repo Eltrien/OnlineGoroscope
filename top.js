@@ -1,6 +1,7 @@
 /**
  * Created by User on 24.04.2015.
  */
+var clock = require('./time');
 var top_account = function()
 {
     var accString;
@@ -27,7 +28,7 @@ var top_account = function()
                 '<div class="topbar-list"><a href="errorpage" class="topbar-list-element">error page</a></div>' +
             '</div>' +
         '</div>' +
-        '<div class="topbar-account">' +
+        '<div class="topbar-account">' + clock() +
             accString +
         '</div>' +
     '</div>' +

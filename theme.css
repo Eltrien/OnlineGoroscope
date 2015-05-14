@@ -12,8 +12,10 @@
     color: #cfba6b;
     text-transform: uppercase;
     box-sizing: border-box;
-    outline: 1px solid #0C1830;
-    vertical-align: middle;
+    outline: 1px solid #0C1830;-ms-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
 }
 .topbar-content
 {
@@ -95,6 +97,7 @@
     font-style: italic;
     font-family: "Times New Roman";
     outline: none;
+    cursor: pointer;
 }
 .topbar-account-login:hover
 {
@@ -190,16 +193,29 @@
     left: 0;
     width: 100%;
 }
-#time
+#timebar
 {
+    left: 0;
+    top: 40px;
+    width: 100%;
     position: fixed;
-    top: 50px;
-    right: 4px;
-    width: 130px;
-    height: 100px;
-    font-size: 20px;
+    display: inline-block;
+
+}
+.time
+{
+    float: right;
+    display: inline-block;
+    font-size: 14px;
+    font-family: "Times New Roman";
     mso-padding-between: 5px;
-    background-color: #050010;
+    margin: 7px 5px 0 5px;
+    padding: 4px;
+    background: linear-gradient(#1c5254,#061415);
+    border: 1px solid;
+    border-color: #187277 #3a6668 #0e3f41 #3a6668;
+    border-radius: 1px;
+    cursor: default;
 }
 #forecastcol
 {
@@ -208,6 +224,7 @@
     top: 50px;
     width: 24%;
     left: 3%;
+    display: inline-block;
 }
 body
 {
@@ -221,6 +238,10 @@ body
 a
 {
     text-decoration: none;
+}
+form
+{
+    margin-bottom: 0;
 }
 ::-webkit-input-placeholder {color:#cfba6b; font-size: 12px;}
 ::-moz-placeholder          {color:#cfba6b; font-size: 12px;}/* Firefox 19+ */

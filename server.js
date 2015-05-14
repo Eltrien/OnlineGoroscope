@@ -4,7 +4,6 @@
 var http=require('http');
 var fs = require('fs');
 var url = require('url');
-var clock = require('./time');
 var top = require('./top')
 var express = require('express');
 var jade = require('jade');
@@ -41,7 +40,6 @@ var server=http.createServer(function(request,response)
 /*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
         response.writeHead(200, {'Content-Type': 'text/html'});
         var string = top(); /*top bar*/
-        string += clock(); /*time*/
         response.write(string);
 /*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
         if(err1) fs.readFile('errorpage.html', function(err,contest){response.end(contest);})
