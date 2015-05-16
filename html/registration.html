@@ -5,7 +5,41 @@
     <title></title>
     <link type="text/css" rel="stylesheet" href="../css/top.css">
     <link type="text/css" rel="stylesheet" href="../css/main.css">
+    <link type="text/css" rel="stylesheet" href="../css/registration.css">
 </head>
 <body>
+<div id="reg-box">
+    <form class="reg-form" action="/login" autocomplete="off" method="post">
+        <header>
+            <div class="reg-form-logo"></div>
+            <h1 class="reg-form-header">Sign in</h1>
+        </header>
+        ${regerror}
+        <div class="reg-form-group">
+            <label for="reg-form-grouped-username" id="reg-form-grouped-label">Username:</label>
+            <input type="text" class="reg-form-grouped-input" id="reg-form-grouped-username" name="username" maxlength="32" required>
+        </div>
+        <div class="reg-form-group">
+            <label for="reg-form-grouped-password" id="reg-form-grouped-label">Password:</label>
+            <input type="password" class="reg-form-grouped-input" id="reg-form-grouped-password" name="password" maxlength="32" required>
+        </div>
+        <div class="reg-form-group">
+            <label for="reg-form-grouped-password-rep" id="reg-form-grouped-label">Confirim Password:</label>
+            <input type="password" class="reg-form-grouped-input" id="reg-form-grouped-password-rep" name="password-rep" maxlength="32" required>
+        </div>
+        <div class="reg-form-group">
+            <label for="reg-form-grouped-date-year" id="reg-form-grouped-label">Date of Birth:</label>
+            <div class="reg-form-group-box">
+                <input type="text" class="reg-form-grouped-date" id="reg-form-grouped-date-day" name="day" placeholder="dd" maxlength="2" required> &nbsp;-&nbsp;
+                <input type="text" class="reg-form-grouped-date" id="reg-form-grouped-date-month" name="month" placeholder="mm" maxlength="2" required> &nbsp;-&nbsp;
+                <input type="text" class="reg-form-grouped-date" id="reg-form-grouped-date-year" name="year" placeholder="yyyy" maxlength="4" required>
+            </div>
+        </div>
+        <div class="reg-form-regbutton-box">
+            <input type="submit" class="reg-form-regbutton" value="Register">
+        </div>
+        <p id="copyright-notice">${copyrights}</p>
+    </form>
+</div>
 </body>
 </html>

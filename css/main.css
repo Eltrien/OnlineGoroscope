@@ -1,6 +1,7 @@
 body
 {
     background: fixed #151515;
+    /*background: fixed url("../pictures/background.jpg");*/
     width: 100%;
     height: 100%;
     overflow: auto;

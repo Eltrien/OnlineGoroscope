@@ -6,7 +6,7 @@ var top_account = function()
 {
     var accString;
     accString = '' +
-        '<div class="topbar-account-listing">' +
+        '<div class="topbar-account-listing" style="display: $\{display-account-listing\};">' +
             '<div class="topbar-account-list">' +
                 '<form id="login-form" action="/login" autocomplete="off" method="post">' +
                     '<input type="text" class="topbar-input" id="login-form-username" name="username" maxlength="32" placeholder="Username">' +
