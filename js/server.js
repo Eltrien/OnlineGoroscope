@@ -4,50 +4,49 @@
 var http=require('http');
 var fs = require('fs');
 var url = require('url');
-var top = require('./top')
-var express = require('express');
-var jade = require('jade');
-/*var mysql = require('mysql');
-var host='127.0.0.1';
-var port= '3306';
-var client = mysql.createClient(port,host);
-client.user='root';
-client.password='qwerty007';
-client.database='node';
-
-var connection = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'root',
-    password : 'qwerty007'
-});
-
-connection.connect();
-connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
-    if (err) throw err;
-
-    console.log('The solution is: ', rows[0].solution);
-});
-connection.end();
-*/
+var top = require('./top');
+var auth = require('./auth');
 var server=http.createServer(function(request,response)
 {
-    var pathname = url.parse(request.url).pathname;
+
+    var pathname = request.url;
+    if (pathname == '/favicon.ico') return;
     var newpathname = "";
     for (iq = 1; iq < pathname.length; iq++) newpathname += pathname[iq];
     if (newpathname == "") newpathname = "index";
-    fs.readFile(newpathname+'.html',function read(err1,data)
+
+    if (newpathname == 'login' && request.method == 'POST')
+    {
+        var body = "";
+        request.on('data', function (chunk){body += chunk;});
+        request.on('end', function ()
+        {
+            var uname = body.split('&')[0];
+            var upass = body.split('&')[1];
+            console.log('qwerqwregqwer  '+auth(uname,upass));
+        });
+    }
+    fs.readFile('html/' + newpathname+'.html',function read(err1,data)
     {
 /*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
         response.writeHead(200, {'Content-Type': 'text/html'});
         var string = top(); /*top bar*/
+        console.log(pathname);
         response.write(string);
 /*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-        if(err1) fs.readFile('errorpage.html', function(err,contest){response.end(contest);})
-        else response.end(data);
+        if(err1) fs.readFile('html/errorpage.html', function(err,contest){response.end(contest);})
+        else
+        {
+            data = render(data, '${pagename}', 'yoyoyo')
+            response.end(data);
+        }
     })
 })
 server.listen(8000);
 console.log('server started');
 
-
-
+function render(myhtml,template, param)
+{
+    myhtml = (myhtml+'').replace(template, param)
+    return myhtml
+}

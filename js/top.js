@@ -8,9 +8,9 @@ var top_account = function()
     accString = '' +
         '<div class="topbar-account-listing">' +
             '<div class="topbar-account-list">' +
-                '<form id="login-form" action="/auth.js" autocomplete="off" method="post">' +
-                    '<input type="text" class="topbar-input" id="login-form-username" name="username" maxlength="32" placeholder="Username" required>' +
-                    '<input type="password" class="topbar-input" id="login-form-password" name="password" maxlength="32" placeholder="Password" required>' +
+                '<form id="login-form" action="/login" autocomplete="off" method="post">' +
+                    '<input type="text" class="topbar-input" id="login-form-username" name="username" maxlength="32" placeholder="Username">' +
+                    '<input type="password" class="topbar-input" id="login-form-password" name="password" maxlength="32" placeholder="Password">' +
                     '<input type="submit" class="topbar-account-login" value="LOGIN">' +
                 '</form>' +
             '</div>' +
