@@ -3,6 +3,6 @@
  */
 var auth = function(uname,upass)
 {
-    return uname + " yeah " + upass;
+    return uname + "||yeah " + upass + "||";
 }
 module.exports = auth;

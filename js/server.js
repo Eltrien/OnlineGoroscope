@@ -3,19 +3,15 @@
  */
 var http=require('http');
 var fs = require('fs');
-var url = require('url');
 var top = require('./top');
 var auth = require('./auth');
 var server=http.createServer(function(request,response)
 {
 
-    var pathname = request.url;
-    if (pathname == '/favicon.ico') return;
-    var newpathname = "";
-    for (iq = 1; iq < pathname.length; iq++) newpathname += pathname[iq];
-    if (newpathname == "") newpathname = "index";
-
-    if (newpathname == 'login' && request.method == 'POST')
+    var pathname = getPathname(request);
+    if (pathname == 'favicon.ico') return;
+    console.log(request);
+    if (pathname == 'login' && request.method == 'POST')
     {
         var body = "";
         request.on('data', function (chunk){body += chunk;});
@@ -23,30 +19,61 @@ var server=http.createServer(function(request,response)
         {
             var uname = body.split('&')[0];
             var upass = body.split('&')[1];
-            console.log('qwerqwregqwer  '+auth(uname,upass));
+            fs.readFile('html/login.html',function read(err1,data) {
+                response.write(top());
+                data = copyrighted(data);
+                if (uname == 'username=' && upass == 'password=') data = render(data, 'loginerror','');
+                else if (loginCheck(uname,upass))
+                {
+                    data = render(data, 'loginerror','');
+                }
+                else data = render(data, 'loginerror', '<p class="login-form-error">error</p>')
+                response.end(data);
+                return;
+            });
         });
     }
-    fs.readFile('html/' + newpathname+'.html',function read(err1,data)
+    else{
+    fs.readFile('html/' + pathname+'.html',function read(err1,data)
     {
 /*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-        response.writeHead(200, {'Content-Type': 'text/html'});
-        var string = top(); /*top bar*/
-        console.log(pathname);
-        response.write(string);
+        /*response.writeHead(200, {'Content-Type': 'text/html'});*/
+        response.write(top());
 /*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
         if(err1) fs.readFile('html/errorpage.html', function(err,contest){response.end(contest);})
         else
         {
-            data = render(data, '${pagename}', 'yoyoyo')
+            data = copyrighted(data);
+            data = render(data, 'loginerror', 'error')
             response.end(data);
         }
-    })
+    })}
 })
 server.listen(8000);
 console.log('server started');
 
 function render(myhtml,template, param)
 {
-    myhtml = (myhtml+'').replace(template, param)
+    myhtml = (myhtml+'').replace('${'+template+'}', param)
     return myhtml
+}
+function copyrighted(myhtml)
+{
+    var copyrights = ' 2015 Eltrien corp. All rights reserved. Onlinegoroscope and Eltrien are trademarks, service marks, and registered trademarks of Eltrien corp.';
+    myhtml = (myhtml+'').replace('${copyrights}', copyrights)
+    return myhtml
+}
+function loginCheck(uname,upass)
+{
+    var name = 'qwerty';
+    var pass = 'qwertyy'
+    if (uname == 'username='+name && upass == 'password='+pass) return true;
+    return false;
+}
+function getPathname(request)
+{
+    var pathname = request.url;
+    var newpathname = pathname.substr(1);
+    if (newpathname == "") newpathname = "index";
+    return newpathname;
 }

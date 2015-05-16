@@ -7,6 +7,7 @@ body
 {
     margin: 6em auto 2em;
     max-width: 336px;
+    -ms-user-select: none;
     -moz-user-select: none;
     -khtml-user-select: none;
     -webkit-user-select: none;
@@ -35,6 +36,19 @@ body
     text-align: center;
     margin-top: 0;
 
+}
+.login-form-error
+{
+    background: #ee2e24;
+    color: #fff;
+    padding: .5em 1em;
+    font-size: 75%;
+    line-height: 1.5;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-family: Tahoma,sans-serif;
 }
 .login-form-group
 {
@@ -114,4 +128,34 @@ body
     background: linear-gradient(#b87900,#651306);
     box-shadow: inset 1px 1px 9px rgba(135,30,10,.8),inset -1px -1px 5px rgba(181,60,2,.8);
     color: #d1c6b9;
+}
+.login-form-help
+{
+    border: thin solid #1e1e1e;
+    color: #656565;
+    font-family: Tahoma,sans-serif;
+    margin: .5em -1.333333333333333em;
+    padding: .5em 1.333333333333333em;
+    text-align: left;
+    font-size: .75em;
+}
+.login-form-help-reg
+{
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    color: #656565;
+    font-family: Tahoma,sans-serif;
+    text-align: left;
+}
+.login-form-help-reg a
+{
+    text-decoration: none;
+    color: #6dc0cd;
+}
+.login-form-help-reg a:hover
+{
+    text-decoration: underline;
 }

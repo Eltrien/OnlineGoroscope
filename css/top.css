@@ -12,7 +12,8 @@
     color: #cfba6b;
     text-transform: uppercase;
     box-sizing: border-box;
-    outline: 1px solid #0C1830;-ms-user-select: none;
+    outline: 1px solid #0C1830;
+    -ms-user-select: none;
     -moz-user-select: none;
     -khtml-user-select: none;
     -webkit-user-select: none;

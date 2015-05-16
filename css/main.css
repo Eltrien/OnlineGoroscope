@@ -16,3 +16,10 @@ body
     margin: 40px 15% 0;
     width: auto;
 }
+#copyright-notice
+{
+    color: #666;
+    font-size: .625em;
+    line-height: 1.6;
+    margin: 0;
+}
