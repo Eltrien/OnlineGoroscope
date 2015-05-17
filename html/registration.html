@@ -9,23 +9,23 @@
 </head>
 <body>
 <div id="reg-box">
-    <form class="reg-form" action="/login" autocomplete="off" method="post">
+    <form class="reg-form" action="/registration" autocomplete="off" method="post">
         <header>
             <div class="reg-form-logo"></div>
-            <h1 class="reg-form-header">Sign in</h1>
+            <h1 class="reg-form-header">Registration</h1>
         </header>
         ${regerror}
         <div class="reg-form-group">
             <label for="reg-form-grouped-username" id="reg-form-grouped-label">Username:</label>
-            <input type="text" class="reg-form-grouped-input" id="reg-form-grouped-username" name="username" maxlength="32" required>
+            <input type="text" class="reg-form-grouped-input" id="reg-form-grouped-username" name="usernamereg" maxlength="16" required>
         </div>
         <div class="reg-form-group">
             <label for="reg-form-grouped-password" id="reg-form-grouped-label">Password:</label>
-            <input type="password" class="reg-form-grouped-input" id="reg-form-grouped-password" name="password" maxlength="32" required>
+            <input type="password" class="reg-form-grouped-input" id="reg-form-grouped-password" name="passwordreg" maxlength="16" required>
         </div>
         <div class="reg-form-group">
             <label for="reg-form-grouped-password-rep" id="reg-form-grouped-label">Confirim Password:</label>
-            <input type="password" class="reg-form-grouped-input" id="reg-form-grouped-password-rep" name="password-rep" maxlength="32" required>
+            <input type="password" class="reg-form-grouped-input" id="reg-form-grouped-password-rep" name="passwordreg-rep" maxlength="32" required>
         </div>
         <div class="reg-form-group">
             <label for="reg-form-grouped-date-year" id="reg-form-grouped-label">Date of Birth:</label>

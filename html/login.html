@@ -12,16 +12,16 @@
         <form class="login-form" action="/login" autocomplete="off" method="post">
             <header>
                 <div class="login-form-logo"></div>
-                <h1 class="login-form-header">Login</h1>
+                <h1 class="login-form-header">Sign in</h1>
             </header>
-            <!--${loginerror}-->
+            ${loginerror}
             <div class="login-form-group">
                 <label for="login-form-grouped-username" id="login-form-grouped-label">Username</label>
-                <input type="text" class="login-form-grouped-input" id="login-form-grouped-username" name="username" maxlength="32" required>
+                <input type="text" class="login-form-grouped-input" id="login-form-grouped-username" name="username" maxlength="16" required>
             </div>
             <div class="login-form-group">
                 <label for="login-form-grouped-password" id="login-form-grouped-label">Password</label>
-                <input type="password" class="login-form-grouped-input" id="login-form-grouped-password" name="password" maxlength="32" required>
+                <input type="password" class="login-form-grouped-input" id="login-form-grouped-password" name="password" maxlength="16" required>
             </div>
             <div class="login-form-loginbutton-box">
                 <input type="submit" class="login-form-loginbutton" value="LOGIN">

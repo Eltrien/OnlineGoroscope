@@ -3,7 +3,6 @@ body
     color: #fff;
     font-family: Tahoma,sans-serif;
     display: block;
-    overflow-y: scroll;
     height: 100%;
 }
 #reg-box
@@ -42,7 +41,7 @@ body
     text-align: center;
     margin-top: 0;
     font-size: 180%;
-    text-transform: uppercase;
+
 }
 .reg-form-error
 {
