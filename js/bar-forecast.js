@@ -9,10 +9,11 @@ var forecast = function(pathname)
     {
         string = '' +
         '<div id="forecast">' +
-        '<h1>Your forecast</h1>' +
-        '<p>qwerqwerwqerwqer  qwerqwerqweq werqwerq werqwerwqer qwerqwerqw erqwerqwerqwer qwerqw  erqwerwqerqwer qwerqwerqwer   qwerqwerqwerq werqwerqwerqwer</p>' +
+            '<h1>Your forecast</h1>' +
+            '<p>qwerty</p>' +
         '</div>';
     }
+    console.log();
     return string;
 }
 module.exports = forecast;

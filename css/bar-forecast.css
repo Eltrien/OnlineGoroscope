@@ -9,4 +9,5 @@
     background-color: rgba(0,0,0,0.80);
     padding: 10px 1em;
     box-sizing: border-box;
+    min-width: 208px;
 }

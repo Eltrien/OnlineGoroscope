@@ -1,6 +1,7 @@
 /**
  * Created by User on 24.04.2015.
  */
+var interactionCookie = require('./interaction-cookie');
 var top_account = function(pathname)
 {
     var accString;
@@ -20,7 +21,6 @@ var top_account = function(pathname)
             '<a href="registration" class="topbar-account-register">register</a></div>' +
         '</div>';
     }
-
     var string;
     string = '<div id="topbar-bar">' +
     '<div class="topbar-content">' +

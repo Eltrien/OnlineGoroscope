@@ -8,6 +8,8 @@ body
     color: #cfba6b;
     font-family: "Gill Sans W04",GillSans,"Gill Sans","Gill Sans MT",Calibri,"Trebuchet MS",sans-serif;
     box-sizing: border-box;
+    min-width: 1150px;
+
 }
 #page
 {
@@ -20,6 +22,8 @@ body
     border-radius: .25em;
     background-color: rgba(0,0,0,0.80);
     padding: 10px 1em;
+
+    word-break: break-all;
 }
 #copyright-notice
 {

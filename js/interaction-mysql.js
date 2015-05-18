@@ -1,13 +1,22 @@
 /**
  * Created by User on 18.05.2015.
  */
-var mysql      = require('mysql');
+var mysql = require('mysql');
+var interactionCookie = require('./interaction-cookie');
 var connection = mysql.createConnection({
-    host     : 'localhost',
+    host     : '127.0.0.1',
     user     : 'root',
-    password : 'qwerty007'
+    password : '1234',
+    database: 'imdb'
 });
-
+connection.connect(function(err) {
+    if (err) {
+        console.error(err);
+    } else {
+        console.log('connected');
+    }
+});
+connection.end(function(err) { if(err) console.error('Error On DB Close.'); });
 var interactionMysql = function (uname, upass, udate)
 {
     var dbname;
@@ -28,6 +37,7 @@ var interactionMysql = function (uname, upass, udate)
         console.log('uname = ' + uname);
         console.log('upass = ' + upass);
         console.log('udate = ' + udate);
+        interactionCookie(uname,udate);
     }
 };
 module.exports = interactionMysql;
