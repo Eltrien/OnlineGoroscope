@@ -7,7 +7,6 @@ var top = require('./bar-top');
 var forecast = require('./bar-forecast');
 var handlingLoginPage = require('./handling-page-login');
 var handlingLoginReg = require('./handling-page-registration');
-var topBarVisibility = require('./barvisibility-topbar-login');
 var render = require('./render');
 var copyrighted = require('./copyrights');
 var server=http.createServer(function(request,response)
@@ -36,7 +35,6 @@ var server=http.createServer(function(request,response)
         default :
         {
             fs.readFile('html/' + pathname + '.html', function read(err1, data) {
-                response.write(topBarVisibility(pathname));
                 if (err1) fs.readFile('html/errorpage.html', function (err, contest) {
                     response.end(contest);
                 });

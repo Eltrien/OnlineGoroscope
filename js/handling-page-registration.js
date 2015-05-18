@@ -7,9 +7,7 @@
 var render = require('./render');
 var fs = require('fs');
 var top = require('./bar-top');
-var loginCheck = require('./loginCheck');
-var referers = require('./referers');
-var usernameCheck = require('./usernameCheck');
+var interactionMysql = require('./interaction-mysql');
 var handlingPageRegistration = function (request, callback)
 {
     var body = '';
@@ -31,14 +29,14 @@ var handlingPageRegistration = function (request, callback)
             day = body.split('&')[3].split('=')[1];
             month = body.split('&')[4].split('=')[1];
             year = body.split('&')[5].split('=')[1];
-            date = year + '-' + day + '-' + month;
+            date = year + '-' + month + '-' + day;
             var data;
             if (uname.length < 4)
             {
                 data = fs.readFileSync('html/registration.html','utf8');
                 callback(render(data, 'regerror', '<p class="reg-form-error">Username must be between 4 and 16 charachters long</p>'));
             }
-            else if (usernameCheck(uname))
+            else if (interactionMysql(uname))
             {
                 data = fs.readFileSync('html/registration.html','utf8');
                 callback(render(data, 'regerror', '<p class="reg-form-error">Sorry, this username is already registrated</p>'));
@@ -70,6 +68,7 @@ var handlingPageRegistration = function (request, callback)
             }
             else
             {
+                interactionMysql(uname,upass,date);
                 data = fs.readFileSync('html/redirect.html','utf8');
                 callback(render(data,'redirect', 'index'));
             }

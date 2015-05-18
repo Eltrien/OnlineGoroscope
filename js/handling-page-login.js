@@ -4,7 +4,7 @@
 var render = require('./render');
 var fs = require('fs');
 var top = require('./bar-top');
-var loginCheck = require('./loginCheck');
+var interactionMysql = require('./interaction-mysql');
 var referers = require('./referers');
 var handlingPageLogin = function (request, callback)
 {
@@ -19,7 +19,7 @@ var handlingPageLogin = function (request, callback)
             uname = body.split('&')[0].split('=')[1];
             upass = body.split('&')[1].split('=')[1];
             var data;
-            if (loginCheck(uname,upass))
+            if (interactionMysql(uname,upass))
             {
                 var pathname;
                 if (referers(request) == 'login' || referers(request) == '') pathname = 'index';
