@@ -75,6 +75,7 @@
 {
     margin: 0;
     height: 100%;
+    display: inline-block;
 }
 .topbar-account-list
 {
@@ -225,13 +226,4 @@
     border-color: #187277 #3a6668 #0e3f41 #3a6668;
     border-radius: 1px;
     cursor: default;
-}
-#forecastcol
-{
-    position: fixed;
-    word-wrap: break-word;
-    top: 50px;
-    width: 24%;
-    left: 3%;
-    display: inline-block;
 }

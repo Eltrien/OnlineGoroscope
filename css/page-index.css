@@ -1,0 +1,15 @@
+body
+{
+    color: #fff;
+    font-family: Tahoma,sans-serif;
+}
+#login-box
+{
+    background: url("../pictures/background.jpg");
+    margin: 6em auto 2em;
+    max-width: 336px;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+}

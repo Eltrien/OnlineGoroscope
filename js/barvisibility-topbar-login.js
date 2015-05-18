@@ -1,7 +1,7 @@
 /**
  * Created by User on 17.05.2015.
  */
-var top = require('./top');
+var top = require('./bar-top');
 var render = require('./render')
 var topbarLoginVisibility = function(pathname)
 {

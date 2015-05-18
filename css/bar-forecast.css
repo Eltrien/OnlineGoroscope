@@ -1,0 +1,12 @@
+#forecast
+{
+    position: fixed;
+    width: 18%;
+    background-color: darkgrey;
+    text-align: center;
+    border: thin solid #766e4c;
+    border-radius: .25em;
+    background-color: rgba(0,0,0,0.80);
+    padding: 10px 1em;
+    box-sizing: border-box;
+}

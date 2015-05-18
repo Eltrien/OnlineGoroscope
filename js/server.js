@@ -3,16 +3,17 @@
  */
 var http=require('http');
 var fs = require('fs');
-var top = require('./top');
-var render = require('./render');
+var top = require('./bar-top');
+var forecast = require('./bar-forecast');
 var handlingLoginPage = require('./handling-page-login');
 var handlingLoginReg = require('./handling-page-registration');
-var topBarVisibility = require('./topbar-login-visibility');
+var topBarVisibility = require('./barvisibility-topbar-login');
+var render = require('./render');
 var copyrighted = require('./copyrights');
 var server=http.createServer(function(request,response)
 {
     var pathname = getPathname(request);
-    response.write(topBarVisibility(pathname));
+    response.write(top(pathname)+forecast(pathname));
     switch (pathname) {
         case 'favicon.ico': return;
         case 'login':
@@ -38,7 +39,7 @@ var server=http.createServer(function(request,response)
                 response.write(topBarVisibility(pathname));
                 if (err1) fs.readFile('html/errorpage.html', function (err, contest) {
                     response.end(contest);
-                })
+                });
                 else {
                     data = render(data, 'pagename', 'yoyoyo');
                     response.end(data);

@@ -3,7 +3,7 @@
  */
 var render = require('./render');
 var fs = require('fs');
-var top = require('./top');
+var top = require('./bar-top');
 var loginCheck = require('./loginCheck');
 var referers = require('./referers');
 var handlingPageLogin = function (request, callback)

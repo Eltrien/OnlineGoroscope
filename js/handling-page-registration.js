@@ -6,7 +6,7 @@
  */
 var render = require('./render');
 var fs = require('fs');
-var top = require('./top');
+var top = require('./bar-top');
 var loginCheck = require('./loginCheck');
 var referers = require('./referers');
 var usernameCheck = require('./usernameCheck');
@@ -63,7 +63,7 @@ var handlingPageRegistration = function (request, callback)
                 data = fs.readFileSync('html/registration.html','utf8');
                 callback(render(data, 'regerror', '<p class="reg-form-error">Attention! Vampires prohibited registration!</p>'));
             }
-            else if (year > 2016)
+            else if (year >= 2016)
             {
                 data = fs.readFileSync('html/registration.html','utf8');
                 callback(render(data, 'regerror', '<p class="reg-form-error">Are u from the future?</p>'));
