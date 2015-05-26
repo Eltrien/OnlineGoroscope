@@ -6,6 +6,15 @@ var top_account = function(pathname)
 {
     var accString;
     if (pathname == 'login' || pathname == 'registration') accString = '';
+    else if (1 == 0)
+    {
+        accString = '' +
+        '<div class="topbar-account-listing">' +
+            '<div class="topbar-account-welcome">' +
+                'Hi, user' +
+            '</div>' +
+        '</div>';
+    }
     else
     {
         accString = '' +
@@ -22,7 +31,8 @@ var top_account = function(pathname)
         '</div>';
     }
     var string;
-    string = '<div id="topbar-bar">' +
+    string = '' +
+    '<div id="topbar-bar">' +
     '<div class="topbar-content">' +
         '<div class="topbar-icon">' +
             '<a class="mainicon" href="/"></a>' +

@@ -3,7 +3,6 @@
  */
 var render = function(myhtml,template, param)
 {
-    myhtml = (myhtml+'').replace('${'+template+'}', param)
-    return myhtml
+    return (myhtml+'').replace('${'+template+'}', param)
 }
 module.exports = render;

@@ -1,6 +1,7 @@
 /**
  * Created by User on 18.05.2015.
  */
+var interactionMysql = require('./interaction-mysql');
 var interactionCookie = function (uname, udate)
 {
     if (arguments.length == 0)
@@ -30,7 +31,7 @@ function getCookie(name) {
         offset = cookie.indexOf(search);
         if (offset != -1) {
             offset += search.length;
-            end = cookie.indexOf(";", offset)
+            end = cookie.indexOf(";", offset);
             if (end == -1) {
                 end = cookie.length;
             }
@@ -39,10 +40,26 @@ function getCookie(name) {
     }
     return(setStr);
 }
-function setCookie (name, value, expires, path) {
+interactionCookie.setCookie = function setCookie (name, value, expires, path) {
     document.cookie = name + "=" + escape(value) +
     ((expires) ? "; expires=" + expires : "") +
     ((path) ? "; path=" + path : "") +
     ((domain) ? "; domain=" + domain : "") +
     ((secure) ? "; secure" : "");
-}
+};
+interactionCookie.getData = function getData(callback)
+{
+    var cuHash,
+        cuID;
+    /*
+    * here we should get data from cookie, but i dont know how, so it will be constant:/
+    * */
+    if (true/*cookie exist*/) {
+        cuHash = 0;
+        cuID = 6;
+        interactionMysql.accGetData(cuID, cuHash, function (res) {
+            callback(res);
+        });
+    }
+    else callback(false);
+};
