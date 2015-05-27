@@ -16,8 +16,10 @@ var server=http.createServer(function(request,response)
 {
     interactionCookie.getData(function(udata) {
         var pathname = getPathname(request);
+        response.writeHead(200, {"Content-Type": "text/html; charset=utf-8"});
         response.write(top(pathname, udata) + forecast(pathname, udata));
         //console.log(request);
+
         switch (pathname) {
             case 'favicon.ico':
                 return;
@@ -33,7 +35,7 @@ var server=http.createServer(function(request,response)
                  var obj = JSON.parse(sessionStorage.getItem('user'));*/
                 //localStorage;
 
-                handlingLoginPage(request, function (data) {
+                handlingLoginPage(request, udata, function (data) {
                     data = copyrighted(data);
                     response.end(data);
                 });

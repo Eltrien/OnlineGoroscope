@@ -173,6 +173,14 @@
     border-radius: 1px;
     outline: none;
 }
+.topbar-account-welcome
+{
+    margin-top: 12px;
+    padding: 0 1em;
+    font-family: "Times New Roman";
+    text-transform: none;
+    display: inline-block;
+}
 #login-form-label
 {
     text-transform: none;

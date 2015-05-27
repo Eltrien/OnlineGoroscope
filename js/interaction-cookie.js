@@ -49,17 +49,13 @@ interactionCookie.setCookie = function setCookie (name, value, expires, path) {
 };
 interactionCookie.getData = function getData(callback)
 {
-    var cuHash,
-        cuID;
-    /*
-    * here we should get data from cookie, but i dont know how, so it will be constant:/
-    * */
-    if (true/*cookie exist*/) {
-        cuHash = 0;
-        cuID = 6;
-        interactionMysql.accGetData(cuID, cuHash, function (res) {
-            callback(res);
-        });
-    }
-    else callback(false);
+    var cuHash = 125;
+    interactionMysql.accLogined(cuHash, function(cuID) {
+        if (cuID!=false) {
+            interactionMysql.accGetData(cuID, cuHash, function (res) {
+                callback(res);
+            });
+        }
+        else callback(false);
+    });
 };

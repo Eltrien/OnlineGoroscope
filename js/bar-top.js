@@ -2,16 +2,23 @@
  * Created by User on 24.04.2015.
  */
 var interactionCookie = require('./interaction-cookie');
-var top_account = function(pathname)
+var top_account = function(pathname,udata)
 {
     var accString;
+    var uname = '';
+    if (udata != false)uname = udata.split('&')[0];
     if (pathname == 'login' || pathname == 'registration') accString = '';
-    else if (1 == 0)
+    else if (uname != '')
     {
         accString = '' +
         '<div class="topbar-account-listing">' +
             '<div class="topbar-account-welcome">' +
-                'Hi, user' +
+                'Hi, ' + uname +
+            '</div>' +
+            '<div class="topbar-account-list">' +
+                '<form id="login-form" action="/login" method="post">' +
+                    '<input type="submit" class="topbar-account-login" value="Exit">' +
+                '</form>' +
             '</div>' +
         '</div>';
     }
@@ -20,12 +27,12 @@ var top_account = function(pathname)
         accString = '' +
         '<div class="topbar-account-listing">' +
             '<div class="topbar-account-list">' +
-            '<form id="login-form" action="/login" autocomplete="off" method="post">' +
-                '<input type="text" class="topbar-input" id="login-form-username" name="username" maxlength="32" placeholder="Username">' +
-                '<input type="password" class="topbar-input" id="login-form-password" name="password" maxlength="32" placeholder="Password">' +
-                '<input type="submit" class="topbar-account-login" value="LOGIN">' +
-            '</form>' +
-        '</div>' +
+                '<form id="login-form" action="/login" autocomplete="off" method="post">' +
+                    '<input type="text" class="topbar-input" id="login-form-username" name="username" maxlength="32" placeholder="Username">' +
+                    '<input type="password" class="topbar-input" id="login-form-password" name="password" maxlength="32" placeholder="Password">' +
+                    '<input type="submit" class="topbar-account-login" value="LOGIN">' +
+                '</form>' +
+            '</div>' +
         '<div class="topbar-account-list">' +
             '<a href="registration" class="topbar-account-register">register</a></div>' +
         '</div>';

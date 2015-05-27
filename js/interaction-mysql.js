@@ -38,34 +38,32 @@ interactionMysql.accLogin = function accLogin(ulogin,upass,callback)
 {
     connection.query("SELECT COUNT(uID) FROM uAccounts WHERE uLogin=? AND uPass=?", [ulogin, upass], function (err, res) {
         if (res[0]['COUNT(uID)'] == '0' || err) callback(false);
-        else callback(true);
+        else
+        {   interactionMysql.accHash(ulogin,125,function(q) {
+                console.log(q);
+                callback(true);
+            });
+        }
     });
 };
 
 interactionMysql.accHash = function accHash(ulogin,uhash,callback)
 {
-    connection.query("UPDATE uAccounts SET uHash=? WHERE uName=?",[uhash, ulogin],function(err, res){
-        if (err) callback(false);
-        else callback(true);
-    });
-};
+    connection.query("UPDATE uAccounts SET uHash=? WHERE uLogin=?",[uhash, ulogin],function(err, res){
 
-interactionMysql.accDeLogin = function accDeLogin(ulogin,upass,callback)
-{
-    connection.query("SELECT COUNT(uID) FROM uAccounts WHERE uLogin=? AND uPass=?", [ulogin, upass], function (err, res) {
-        if (res[0]['COUNT(uID)'] == '0' || err) callback(false);
+        if (err) {
+            console.error(err);
+            callback(false);
+        }
         else callback(true);
     });
 };
 
 interactionMysql.accReg = function accReg(ulogin, upass, udate, callback)
 {
-    console.log('uname = ' + ulogin);
-    console.log('upass = ' + upass);
-    console.log('udate = ' + udate);
     connection.query("INSERT INTO uAccounts(uLogin,uPass,uDate,uHash) VALUES('"+ulogin+"','"+upass+"','"+udate+"','0')");
     //interactionCookie(uname,udate);
-    callback(true);
+    interactionMysql.accHash(ulogin,125,function(){callback(true);});
 };
 
 interactionMysql.accGetData = function accGetData(cuID,cuHash,callback)
@@ -77,6 +75,14 @@ interactionMysql.accGetData = function accGetData(cuID,cuHash,callback)
             console.error(err);
         }
         else callback(res[0]['uLogin'] +"&"+ res[0]['uDate']);
+    });
+};
+interactionMysql.accLogined = function accLogined(uHash, callback)
+{
+    connection.query("SELECT uID FROM uAccounts WHERE uHash=?",[uHash],function(err, res)
+    {
+        if (err || res == '') callback(false);
+        else callback(res[0]['uID']);
     });
 };
 /*connection.end(function(err)
