@@ -7,7 +7,13 @@
     border: thin solid #766e4c;
     border-radius: .25em;
     background-color: rgba(0,0,0,0.80);
-    padding: 10px 1em;
+    padding: 10px 1.5em;
     box-sizing: border-box;
     min-width: 208px;
+    font-size: 18px;
+}
+B
+{
+    font-size: 22px;
+    text-decoration: underline;
 }

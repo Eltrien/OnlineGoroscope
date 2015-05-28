@@ -54,6 +54,17 @@ var server=http.createServer(function(request,response)
                 });
                 break;
             }
+            case 'js/handling-page-forecast.js':
+            {/*C:\\Users\\User\\WebstormProjects\\untitled1\\OnlineGoroscope\\js\\handling-page-forecast.js*/
+                fs.readFile('./js/handling-page-forecast.js', function (err, contest)
+                {
+                    response.writeHead(200, {
+                        'Content-Type': "text/html; charset=utf-8"});
+                    console.log(err);
+                    response.end(contest);
+                });
+                break;
+            }
             default :
             {
 

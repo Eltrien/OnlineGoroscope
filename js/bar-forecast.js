@@ -13,7 +13,9 @@ var forecast = function(pathname,udata)
         string = '' +
         '<div id="forecast">' +
             '<h1>Your forecast</h1>' +
+            '<hr>' +
             '<p>' + forecasts('', urforecast(month,day)) + '</p>' +
+            '<hr>' +
         '</div>';
 
     }

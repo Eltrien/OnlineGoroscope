@@ -1,0 +1,111 @@
+#zodiac-signs
+{
+    display: block;
+}
+.zodiac-signs-list
+{
+    display: block;
+    margin: 20px 0;
+}
+#Oven
+{
+    display: inline-block;
+    background: url("../pictures/zodiac_signs.png") -25px -105px;
+    background-size: 300%;
+    width: 105px;
+    height: 84px;
+}
+#Telec
+{
+    display: inline-block;
+    background: url("../pictures/zodiac_signs.png") -25px -200px;
+    background-size: 300%;
+    width: 105px;
+    height: 84px;
+}
+#Blizneci
+ {
+     display: inline-block;
+     background: url("../pictures/zodiac_signs.png") -25px -295px;
+     background-size: 300%;
+     width: 105px;
+     height: 84px;
+ }
+#Rak
+{
+    display: inline-block;
+    background: url("../pictures/zodiac_signs.png") -25px -395px;
+    background-size: 300%;
+    width: 105px;
+    height: 84px;
+}
+#Lev
+{
+    display: inline-block;
+    background: url("../pictures/zodiac_signs.png") -25px -816px;
+    background-size: 280%;
+    width: 105px;
+    height: 84px;
+}
+#Deva
+{
+    display: inline-block;
+    background: url("../pictures/zodiac_signs.png") -25px -908px;
+    background-size: 280%;
+    width: 105px;
+    height: 84px;
+}
+#Vesi
+{
+    display: inline-block;
+    background: url("../pictures/zodiac_signs.png") -25px -495px;
+    background-size: 300%;
+    width: 105px;
+    height: 84px;
+}
+#Skorpion
+{
+    display: inline-block;
+    background: url("../pictures/zodiac_signs.png") -25px -545px;
+    background-size: 280%;
+    width: 105px;
+    height: 84px;
+}
+#Strelec
+{
+    display: inline-block;
+    background: url("../pictures/zodiac_signs.png") -25px -635px;
+    background-size: 280%;
+    width: 105px;
+    height: 84px;
+}
+#Kozerog
+{
+    display: inline-block;
+    background: url("../pictures/zodiac_signs.png") -25px -726px;
+    background-size: 280%;
+    width: 105px;
+    height: 84px;
+}
+#Vodoley
+{
+    display: inline-block;
+    background: url("../pictures/zodiac_signs.png") -25px -999px;
+    background-size: 280%;
+    width: 105px;
+    height: 84px;
+}
+#Ribi
+{
+    display: inline-block;
+    background: url("../pictures/zodiac_signs.png") -25px -1091px;
+    background-size: 280%;
+    width: 105px;
+    height: 84px;
+}
+#page-forecast-forecast
+{
+    display: block;
+    padding: 20px 5%;
+    font-size: 18px;
+}
