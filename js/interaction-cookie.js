@@ -47,15 +47,29 @@ interactionCookie.setCookie = function setCookie (name, value, expires, path) {
     ((domain) ? "; domain=" + domain : "") +
     ((secure) ? "; secure" : "");
 };
-interactionCookie.getData = function getData(callback)
+interactionCookie.getData = function getData(cookies, callback)
 {
-    var cuHash = 125;
-    interactionMysql.accLogined(cuHash, function(cuID) {
-        if (cuID!=false) {
-            interactionMysql.accGetData(cuID, cuHash, function (res) {
-                callback(res);
-            });
-        }
-        else callback(false);
-    });
+    var cuHash = cookies.cookieuHash;
+    if (cuHash == 0) callback(false);
+    else {
+        interactionMysql.accLogined(cuHash, function (logined) {
+            if (logined != false) {
+                interactionMysql.accGetData(cuHash, function (res) {
+                    callback(res);
+                });
+            }
+            else callback(false);
+        });
+    }
+};
+
+interactionCookie.creCookie = function creCookie()
+{
+    var ret='';
+    for(var x, j = [], i = 0; i < 20; i++) {
+        x = [[48,57], [65,90], [97,122]][Math.random() * 3 >> 0];
+        j[i] = String.fromCharCode((Math.random() * (x[1] - x[0] + 1) >> 0) + x[0]);
+        ret += j[i];
+    }
+    return ret;
 };

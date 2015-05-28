@@ -8,8 +8,10 @@ var render = require('./render');
 var fs = require('fs');
 var top = require('./bar-top');
 var interactionMysql = require('./interaction-mysql');
+var interactionCookie = require('./interaction-cookie');
 var handlingPageRegistration = function (request, callback)
 {
+    //console.log(interactionCookie.creCookie());
     var body = '';
     var uname = '';
     var upass = '';
@@ -72,9 +74,10 @@ var handlingPageRegistration = function (request, callback)
                     }
                     else
                     {
-                        interactionMysql.accReg(uname,upass,date,function (){
+                        var uHash = interactionCookie.creCookie();
+                        interactionMysql.accReg(uname, upass, date, uHash, function (){
                             data = fs.readFileSync('html/redirect.html','utf8');
-                            callback(render(data,'redirect', 'index'));
+                            callback(render(data,'redirect', 'index'), uHash);
                         });
 
                     }

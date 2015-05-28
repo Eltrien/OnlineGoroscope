@@ -10,32 +10,30 @@ var handlingLoginReg = require('./handling-page-registration');
 var render = require('./render');
 var copyrighted = require('./copyrights');
 var interactionCookie = require('./interaction-cookie');
-var forecasts = require('./forecasts')
+var forecasts = require('./forecasts');
 
 var server=http.createServer(function(request,response)
 {
-    interactionCookie.getData(function(udata) {
+    var cookies = parseCookies(request);
+    //console.log(cookies);
+    //var uHash2 = 0, uID2 = 0;
+    //console.log(interactionCookie.createCookie());
+//    console.log(creCookie());
+    interactionCookie.getData(cookies, function(udata) {
+        var uHashBack;
+        if (udata != false)uHashBack = udata.split('&')[3];
+        else uHashBack = 0;
         var pathname = getPathname(request);
-        response.writeHead(200, {"Content-Type": "text/html; charset=utf-8"});
-        response.write(top(pathname, udata) + forecast(pathname, udata));
-        //console.log(request);
-
         switch (pathname) {
             case 'favicon.ico':
                 return;
             case 'login':
             {
-                /*console.log(response);
-                 response.writeHead(200, {
-                 'Set-Cookie': 'mycookie=test',
-                 'Content-Type': 'text/plain'
-                 });*/
-                /*var user = {'name':'John'};
-                 windo   sessionStorage.setItem('user', JSON.stringify(user));
-                 var obj = JSON.parse(sessionStorage.getItem('user'));*/
-                //localStorage;
-
-                handlingLoginPage(request, udata, function (data) {
+                handlingLoginPage(request, udata, function (data, uHash) {
+                    response.writeHead(200, {
+                        'Set-Cookie': 'cookieuHash='+ uHash,
+                        'Content-Type': "text/html; charset=utf-8"});
+                    response.write(top(pathname, udata) + forecast(pathname, udata));
                     data = copyrighted(data);
                     response.end(data);
                 });
@@ -46,7 +44,11 @@ var server=http.createServer(function(request,response)
                 /*var temp = window.sessionStorage.getItem('user');
                 var viewname = $.parseJSON(temp);
                 console.log(viewname);*/
-                handlingLoginReg(request, function (data) {
+                handlingLoginReg(request, function (data, uHash) {
+                    response.writeHead(200, {
+                        'Set-Cookie': 'cookieuHash='+ uHash,
+                        'Content-Type': "text/html; charset=utf-8"});
+                    response.write(top(pathname, udata) + forecast(pathname, udata));
                     data = copyrighted(data);
                     response.end(data);
                 });
@@ -54,11 +56,22 @@ var server=http.createServer(function(request,response)
             }
             default :
             {
+
+                /*response.writeHead(200, {
+                    'Set-Cookie': 'mycookie=test',
+                    'Content-Type': 'text/plain'
+                });*/
+                //console.log(response);
+                response.writeHead(200, {
+                    'Set-Cookie': 'cookieuHash='+uHashBack,
+                    "Content-Type": "text/html; charset=utf-8"});
+                response.write(top(pathname, udata) + forecast(pathname, udata));
                 fs.readFile('html/' + pathname + '.html', function read(err1, data) {
                     if (err1) fs.readFile('html/errorpage.html', function (err, contest) {
                         response.end(contest);
                     });
                     else {
+                        data = copyrighted(data);
                         data = render(data, 'commonforecast', forecasts('common'));
                         response.end(data);
                     }
@@ -70,10 +83,22 @@ var server=http.createServer(function(request,response)
 });
 server.listen(8000);
 console.log('server started');
+
 function getPathname(request)
 {
     var pathname = request.url;
     var newpathname = pathname.substr(1);
     if (newpathname == "") newpathname = "index";
     return newpathname;
+}
+
+function parseCookies (request) {
+    var list = {},
+        rc = request.headers.cookie;
+    rc && rc.split(';').forEach(function( cookie ) {
+        //console.log(JSON.stringify(cookie) + '//\n');
+        var parts = cookie.split('=');
+        list[parts.shift().trim()] = decodeURI(parts.join('='));
+    });
+    return list;
 }
